@@ -1,5 +1,5 @@
 window.addEventListener('message', function (e) {
-    if (!event.origin.startsWith("https://accounts.nintendo.com")) {  //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
+    if (!event.origin.startsWith("https://accounts.nintendo.com")) {
         alert('OUT');
         return;
     }
@@ -18,6 +18,7 @@ window.addEventListener('message', function (e) {
 
 function session_token(session_token_code, session_token_code_verifier) {
     fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
+        mode: 'no-cors',
         method: "POST",
         headers: {
             'User-Agent': 'OnlineLounge/2.0.0 NASDKAPI iOS'
