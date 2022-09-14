@@ -1,3 +1,8 @@
 <script>
-alert('OK')
+function generateRandom(length) {
+    return btoa(crypto.getRandomValues(new Uint8Array(length)))
+}
+
+function calculateChallenge(codeVerifier) {
+    const hash = 
 </script>
