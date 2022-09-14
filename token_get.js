@@ -17,24 +17,11 @@ window.addEventListener('message', function (e) {
 });
 
 function session_token(session_token_code, session_token_code_verifier) {
-    xhr = new XMLHttpRequest();
-    xhr.onload = function (e) {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var answer = document.getElementById('answer');
-                answer.value = xhr.responseText;
-            }
-        }
-    };
-    xhr.open('POST', 'https://accounts.nintendo.com/connect/1.0.0/api/session_token', false);
-    xhr.setRequestHeader('User-Agent', 'OnlineLounge/2.0.0 NASDKAPI iOS');
-    var request = "client_id=71b963c1b7b6d119&session_token_code=" + session_token_code + "&session_token_code_verifier=" + session_token_code_verifier;
-    xhr.send(request);
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-            alert(xhr.responseText);
-        } else {
-            alert(xhr.responseText);
-        }
-    }
+    fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
+        "POST",
+        {
+            'User-Agent': 'OnlineLounge/2.0.0 NASDKAPI iOS'
+        },
+        "client_id=71b963c1b7b6d119&session_token_code=" + session_token_code + "&session_token_code_verifier=" + session_token_code_verifier
+    }).then((res)=> res.json()).then(console.log).catch(console.error);
 }
