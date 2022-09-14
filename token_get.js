@@ -25,5 +25,5 @@ function session_token(session_token_code, session_token_code_verifier) {
         mode: 'no-cors',
         method: "POST",
         body: body
-    }).then(res => res.json()).then(console.log).catch(console.error);
+    }).then(res => res).then(console.log).catch(console.error);
 }
