@@ -32,6 +32,8 @@ function session_token(session_token_code, session_token_code_verifier) {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             alert(xhr.responseText);
+        } else {
+            alert(xhr.responseText);
         }
     }
 }
