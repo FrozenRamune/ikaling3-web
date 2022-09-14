@@ -13,6 +13,7 @@ window.addEventListener('message', function (e) {
         });
     alert(params.session_token_code);
     alert(window.codeVerifier);
+    session_token(params.session_token_code, window.codeVerifier);
 });
 
 function session_token(session_token_code, session_token_code_verifier) {
