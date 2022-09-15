@@ -31,20 +31,16 @@ if(window.location.href.startsWith('https://accounts.nintendo.com/connect/1.0.0/
     });
 } else {
     function getParam(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
     if(getParam('token')) {
-        $.cookie('token', getParam('token'), {sameSite: "Strict"});
+        $.cookie('_gtoken', getParam('token'));
         window.location = window.location.pathname;
-    } else if($.cookie('token')) {
-        $(function() {
-            $.cookie('_gtoken', $.cookie('token'), {sameSite: "Strict"});
-        });
     }
 }
