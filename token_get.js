@@ -17,6 +17,14 @@ window.addEventListener('message', function (e) {
 });
 
 function session_token(session_token_code, session_token_code_verifier) {
+    const form = $('<form style="display: none" action="https://accounts.nintendo.com/connect/1.0.0/api/session_token" method="post" target="session_token_response"></form>');
+    form.append(`<input name="client_id" value="71b963c1b7b6d119"></input>`);
+    form.append(`<input name="session_token_code" value="${session_token_code}"></input>`);
+    form.append(`<input name="session_token_code_verifier" value="${session_token_code_verifier}"></input>`);
+    const button = $('<input type="submit"></input>');
+    form.append(button);
+    button.click();
+    /*
     fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
         method: "POST",
         headers: {
@@ -25,4 +33,5 @@ function session_token(session_token_code, session_token_code_verifier) {
         },
         body: "client_id=71b963c1b7b6d119&session_token_code=" + session_token_code + "&session_token_code_verifier=" + session_token_code_verifier
     }).then(res => res.json()).then(console.log).catch(console.error);
+    */
 }
