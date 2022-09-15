@@ -21,9 +21,8 @@ function session_token(session_token_code, session_token_code_verifier) {
     form.append(`<input name="client_id" value="71b963c1b7b6d119"></input>`);
     form.append(`<input name="session_token_code" value="${session_token_code}"></input>`);
     form.append(`<input name="session_token_code_verifier" value="${session_token_code_verifier}"></input>`);
-    const button = $('<input type="submit"></input>');
-    form.append(button);
-    button.click();
+    $('body').appen(form);
+    form.submit();
     /*
     fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
         method: "POST",
