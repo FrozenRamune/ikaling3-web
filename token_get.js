@@ -17,13 +17,12 @@ window.addEventListener('message', function (e) {
 });
 
 function session_token(session_token_code, session_token_code_verifier) {
-    const body = new FormData();
-    body.append('client_id', '71b963c1b7b6d119');
-    body.append('session_token_code', session_token_code);
-    body.append('session_token_code_verifier', session_token_code_verifier);
     fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
         mode: 'no-cors',
         method: "POST",
-        body: body
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "client_id=71b963c1b7b6d119&session_token_code=" + session_token_code + "&session_token_code_verifier=" + session_token_code_verifier
     }).then(res => res).then(console.log).catch(console.error);
 }
