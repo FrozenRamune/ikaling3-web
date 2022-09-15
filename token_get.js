@@ -17,7 +17,7 @@ window.addEventListener('message', function (e) {
         session_token(params.session_token_code, window.codeVerifier);
     } else if(e.data.head == "session_token") {
         alert(e.data.body);
-        access_token(e.data.body);
+        id_token(e.data.body);
     } else if(e.data.head == "id_token") {
         alert(e.data.body);
     }
