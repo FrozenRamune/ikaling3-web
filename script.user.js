@@ -41,6 +41,6 @@ if(window.location.href.startsWith('https://accounts.nintendo.com/connect/1.0.0/
     }
     if(getParam('token')) {
         $.cookie('_gtoken', getParam('token'));
-        window.location = window.location.pathname;
+        window.location = window.location.pathname + '?lang=jp';
     }
 }
