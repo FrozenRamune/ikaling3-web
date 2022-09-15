@@ -1,8 +1,8 @@
 window.addEventListener('message', function (e) {
     if (!event.origin.startsWith("https://accounts.nintendo.com"))
         return;
-    $('login_button').prop("disabled", true);
-    $('login_button').text("ログイン済み");
+    $('#login_button').prop("disabled", true);
+    $('#login_button').text("ログイン済み");
     if(e.data.head == "session_token_code") {
         const params = {};
         e.data.body.split('#')[1]
@@ -43,9 +43,9 @@ function splatoon_token(id_token) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({token: id_token})
     }).then(res => res.json()).then((res) => {
-        $('open_button').prop("disabled", false);
-        $('open_button').text("起動");
-        $('open_button').on('click', () => {
+        $('#open_button').prop("disabled", false);
+        $('#open_button').text("起動");
+        $('#open_button').on('click', () => {
             window.open('https://api.lp1.av5ja.srv.nintendo.net/?token='+res)
         });
     }).catch(console.error);
