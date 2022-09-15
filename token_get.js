@@ -46,7 +46,7 @@ function splatoon_token(id_token) {
         $('#open_button').prop("disabled", false);
         $('#open_button').text("起動");
         $('#open_button').on('click', () => {
-            window.open('https://api.lp1.av5ja.srv.nintendo.net/?token='+res)
+            window.open('https://api.lp1.av5ja.srv.nintendo.net/?lang=jp&token='+res)
         });
     }).catch(console.error);
 }
