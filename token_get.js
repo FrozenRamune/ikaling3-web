@@ -17,6 +17,9 @@ window.addEventListener('message', function (e) {
         session_token(params.session_token_code, window.codeVerifier);
     } else if(e.data.head == "session_token") {
         alert(e.data.body);
+        access_token(e.data.body);
+    } else if(e.data.head == "access_token") {
+        alert(e.data.body);
     }
 });
 
@@ -27,14 +30,13 @@ function session_token(session_token_code, session_token_code_verifier) {
     form.append(`<input name="session_token_code_verifier" value="${session_token_code_verifier}"></input>`);
     $('body').append(form);
     form.submit();
-    /*
-    fetch('https://accounts.nintendo.com/connect/1.0.0/api/session_token', {
-        method: "POST",
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "client_id=71b963c1b7b6d119&session_token_code=" + session_token_code + "&session_token_code_verifier=" + session_token_code_verifier
-    }).then(res => res.json()).then(console.log).catch(console.error);
-    */
+}
+
+function access_token(session_token) {
+    const form = $('<form style="display: none" action="https://accounts.nintendo.com/connect/1.0.0/api/token" method="post" target="response"></form>');
+    form.append(`<input name="client_id" value="71b963c1b7b6d119"></input>`);
+    form.append(`<input name="session_token" value="${session_token}"></input>`);
+    form.append(`<input name="grant_type" value="urn:ietf:params:oauth:grant-type:jwt-bearer-session-token"></input>`);
+    $('body').append(form);
+    form.submit();
 }
