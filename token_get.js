@@ -48,7 +48,7 @@ function splatoon_token(id_token) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({token: 'eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYWNjb3VudHMubmludGVuZG8uY29tLzEuMC4wL2NlcnRpZmljYXRlcyIsImtpZCI6IjFkMjA2OTk2LTQ5ODMtNDAxMS1hNmJiLWUwZDEwYjlmNzdkZSJ9.eyJpYXQiOjE2NjMxNDA1NzMsImF1ZCI6IjcxYjk2M2MxYjdiNmQxMTkiLCJhdF9oYXNoIjoiSlk0R21TcFY4TDZOUm9ucWRlakpVQSIsImNvdW50cnkiOiJKUCIsImp0aSI6ImJjMzhjNTg1LWRkMGEtNGZiOS04OWQ0LWE3YzM4YjMwOTFkYiIsImV4cCI6MTY2MzE0MTQ3MywiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5uaW50ZW5kby5jb20iLCJzdWIiOiI4ODA2Y2NiMGE0M2Q3ODE0IiwidHlwIjoiaWRfdG9rZW4ifQ.fxBXCgu7HwfORufdbb21bEPqeVG0iAeDqr7v3Cy5PUHd8h-jNMv_skLHl4GPgdfhjWmP0EDy3Fre-CAmd_7UNXPeNhjscoAzDTdtv6JB0RYSkHPN8YSpmJoxVgBM9RHhmKrIxWQ6Epw8nF-UkAFXjEMJE2srHutCUQBm30lwUwTwT_3bk0om2mQg8pn7vFLb9F6xBV2AZev3m4AlbOoO3W9G9RJRqIN6rG7cH5C_MsX0ScTgicH83pfJEFfvavBl5hYPu7thjhcmdVwJtGh6WHkZbwWkGSVxmie8sYRnmEuZfCflqI871W6OTga9uWcRjwscnYyk1mHxjd7fRB_enA'})
     }).then(res => res.json()).then((res) => {
-        const form = $('<form style="display: none" action="https://api-lp1.znc.srv.nintendo.net/v3/Account/Login" method="post" target="response"></form>');
+        /*const form = $('<form style="display: none" action="https://api-lp1.znc.srv.nintendo.net/v3/Account/Login" method="post" target="response"></form>');
         form.append(`<input name="f" value="${res.f}"></input>`);
         form.append(`<input name="language" value="ja-JP"></input>`);
         form.append(`<input name="naBirthday" value="2000-01-01"></input>`);
@@ -57,6 +57,7 @@ function splatoon_token(id_token) {
         form.append(`<input name="requestId" value="${res.request_id}"></input>`);
         form.append(`<input name="timestamp" value="${res.timestamp}"></input>`);
         $('body').append(form);
-        form.submit();
+        form.submit();*/
+        console.log(res);
     }).catch(console.error);
 }
