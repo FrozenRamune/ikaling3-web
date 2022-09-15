@@ -43,6 +43,16 @@ function id_token(session_token) {
 }
 
 function splatoon_token(id_token) {
+    fetch('https://api.imink.app/f', {
+        method: 'POST',
+        headers: {
+            User-Agent: 'ikaling3-web/1.0'
+        },
+        body: {
+            token: id_token,
+            hash_method: 1
+        }
+    }).then(res => res.json()).then(console.log).catch(console.error);/*
     const form = $('<form style="display: none" action="https://api-lp1.znc.srv.nintendo.net/v3/Account/Login" method="post" target="response"></form>');
     form.append(`<input name="language" value="ja-JP"></input>`);
     form.append(`<input name="naBirthday" value="2000-01-01"></input>`);
@@ -51,5 +61,5 @@ function splatoon_token(id_token) {
     form.append(`<input name="requestId" value="96a80e43-cc15-4724-9196-31708bc56d1d"></input>`);
     form.append(`<input name="timestamp" value="${Date.now()}"></input>`);
     $('body').append(form);
-    form.submit();
+    form.submit();*/
 }
