@@ -1,6 +1,8 @@
 window.addEventListener('message', function (e) {
     if (!event.origin.startsWith("https://accounts.nintendo.com"))
         return;
+    $('login_button').prop("disabled", true);
+    $('login_button').text("ログイン済み");
     if(e.data.head == "session_token_code") {
         const params = {};
         e.data.body.split('#')[1]
@@ -41,16 +43,10 @@ function splatoon_token(id_token) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({token: id_token})
     }).then(res => res.json()).then((res) => {
-        /*const form = $('<form style="display: none" action="https://api-lp1.znc.srv.nintendo.net/v3/Account/Login" method="post" target="response"></form>');
-        form.append(`<input name="f" value="${res.f}"></input>`);
-        form.append(`<input name="language" value="ja-JP"></input>`);
-        form.append(`<input name="naBirthday" value="2000-01-01"></input>`);
-        form.append(`<input name="naCountry" value="JP"></input>`);
-        form.append(`<input name="naIdToken" value="${id_token}"></input>`);
-        form.append(`<input name="requestId" value="${res.request_id}"></input>`);
-        form.append(`<input name="timestamp" value="${res.timestamp}"></input>`);
-        $('body').append(form);
-        form.submit();*/
-        console.log(res);
+        $('open_button').prop("disabled", false);
+        $('open_button').text("起動");
+        $('open_button').on('click', () => {
+            window.open('https://api.lp1.av5ja.srv.nintendo.net/?token='+res)
+        });
     }).catch(console.error);
 }
