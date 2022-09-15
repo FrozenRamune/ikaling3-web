@@ -46,7 +46,7 @@ function splatoon_token(id_token) {
     fetch('https://api.imink.app/f', {
         method: 'POST',
         headers: {
-            User-Agent: 'ikaling3-web/1.0'
+            'User-Agent': 'ikaling3-web/1.0'
         },
         body: {
             token: id_token,
