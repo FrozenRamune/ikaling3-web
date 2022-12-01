@@ -38,7 +38,7 @@ function id_token(session_token) {
 }
 
 function splatoon_token(id_token) {
-    fetch('https://ftoken-api.herokuapp.com/', {
+    fetch('https://ftoken-api.onrender.com/', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({token: id_token})
